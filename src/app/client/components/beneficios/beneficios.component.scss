@@ -1,0 +1,80 @@
+.beneficios {
+  padding: 6.375rem 8.125rem 9.625rem 8.125rem;
+
+  &__text {
+    overflow: hidden;
+    color: #333;
+    font-variant-numeric: lining-nums proportional-nums;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Quicksand;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 3.999rem;
+    /* 133.3% */
+    letter-spacing: -0.06rem;
+
+    margin-bottom: 4.5rem;
+  }
+
+  &__cards {
+    display: flex;
+
+    .card {
+      padding: 2rem;
+      width: 25rem;
+      height: 23.6875rem;
+      display: flex;
+      flex-direction: column;
+      border-radius: 1.5rem;
+      background: #FFF;
+      filter: drop-shadow(0px 8px 60px rgba(0, 0, 0, 0.08));
+      transition: background .2s;
+
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+
+      &:hover {
+        background: #F2FEFF;
+      }
+
+      .icon {
+        margin-bottom: 2rem;
+
+        img {
+          width: 4.5rem;
+          height: 4.5rem;
+        }
+      }
+
+      .title {
+        margin-bottom: 1.5rem;
+
+        p {
+          color: #333;
+          font-variant-numeric: lining-nums proportional-nums;
+          font-family: Quicksand;
+          font-size: 2rem;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 2.6875rem;
+          /* 134.375% */
+        }
+      }
+
+      .text {
+        p {
+          color:  #666;
+          font-family: Poppins;
+          font-size: .875rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1.5rem;
+          /* 171.429% */
+        }
+      }
+    }
+  }
+}

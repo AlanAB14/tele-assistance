@@ -1,0 +1,82 @@
+.instalaciones__section {
+  padding: 3.125rem 10.1919rem;
+  background: #FBFBFB;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__header {
+    display: flex;
+    align-items: center;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: 22.3125rem;
+
+      h1 {
+        color: #242424;
+        font-family: Quicksand;
+        font-size: 3rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        /* 57.6px */
+        letter-spacing: -0.075rem;
+        margin-bottom: 1.25rem;
+      }
+
+      p {
+        color: #6B7280;
+        font-family: Poppins;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.75rem;
+        /* 155.556% */
+      }
+    }
+
+    .link {
+      display: flex;
+
+      p {
+        color: #312E81;
+        font-family: Poppins;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        /* 21.6px */
+        letter-spacing: -0.0281rem;
+        margin-right: .625rem;
+      }
+    }
+  }
+
+  &__images {
+    display: flex;
+    margin-top: 2.1875rem;
+
+    img {
+      width: 31.1189rem;
+      height: 21.875rem;
+      border-radius: .75rem;
+
+      &:not(:last-of-type) {
+        margin-right: 2.0381rem;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 7.0625rem;
+
+    img {
+      width: 17.875rem;
+    }
+  }
+}

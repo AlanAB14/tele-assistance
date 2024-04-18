@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Lato';
+    src: url('./assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('./assets/fonts/Quicksand/static/Quicksand-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway/static/Raleway-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #009CA7;
+}
+
+html {
+    font-size: 100%;
+}
+
+html, body { height: 100%; }
+
+body {
+    font-family: 'Quicksand';
+}

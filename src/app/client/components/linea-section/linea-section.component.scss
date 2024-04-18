@@ -1,0 +1,160 @@
+.linea-section {
+  padding: 7.8125rem 12.5rem 0 12.5rem;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    .title {
+      color: #000;
+      font-family: Quicksand;
+      font-size: 3.75rem;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+
+      span {
+        color: #009CA7;
+      }
+    }
+
+    .subtitle {
+      color: #000;
+      font-family: Lato;
+      font-size: 1.5625rem;
+      font-style: normal;
+      font-weight: 400;
+
+      max-width: 24.5rem;
+
+
+      span {
+        font-weight: 700;
+      }
+    }
+
+    .certification {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: end;
+
+      p {
+        color: #000;
+        font-family: Quicksand;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 700;
+      }
+
+      img {
+        width: 12.5rem;
+      }
+    }
+  }
+
+  &__video {
+    margin: 3.75rem 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__services {
+    padding: 6.25rem 9.375rem;
+
+    display: flex;
+
+    .info-principal {
+      display: flex;
+      flex-direction: column;
+      margin-right: 4rem;
+
+      .intro {
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 1.125rem;
+        font-style: normal;
+        padding: .25rem 1.5rem;
+        background-color: #043A53;
+        border-radius: 6.25rem;
+        margin-bottom: 2rem;
+        width: fit-content;
+
+        span {
+          text-decoration: underline;
+          font-weight: 700;
+        }
+      }
+
+      .title {
+        color: #12141D;
+        font-family: Quicksand;
+        font-size: 4.0625rem;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: -0.0813rem;
+        margin-bottom: 2rem;
+      }
+
+      .subtitle {
+        color: #6B7280;
+        font-family: Poppins;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.75rem;
+        letter-spacing: -0.0338rem;
+      }
+    }
+
+    .cards {
+      display: flex;
+
+      .card {
+        border-radius: 1rem;
+        background: #F2F5F6;
+        padding: 2rem 1.5rem;
+        width: 17.6875rem;
+
+        &:not(:last-of-type) {
+          margin-right: 1rem;
+        }
+
+        .image {
+          margin-bottom: .625rem;
+        }
+
+        .title {
+          color: #12141d;
+          font-family: Lato;
+          font-size: 1.5rem;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 2rem;
+          margin-bottom: .625rem;
+        }
+
+        .text {
+          overflow: hidden;
+          color: #404040;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-family: Roboto;
+          font-size: 1.125rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1.75rem;
+
+          p {
+            white-space: normal;
+          }
+        }
+
+
+      }
+    }
+  }
+}

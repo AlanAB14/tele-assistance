@@ -1,0 +1,51 @@
+.navbar {
+  color: #FFF;
+  font-family: Raleway;
+  font-size: 1.375rem;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+
+  padding: 5.625rem 11.25rem;
+
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+
+  &__logo {
+    img {
+      width: 7.419rem;
+    }
+  }
+
+  &__items {
+    ul {
+      display: flex;
+      list-style: none;
+
+      li {
+        &:not(:last-of-type) {
+          margin-right: 3.125rem;
+        }
+      }
+    }
+  }
+
+  &__redes {
+    a {
+
+      img {
+        width: 1.4375rem;
+      }
+
+      &:not(:last-of-type) {
+        margin-right: 2.3125rem;
+      }
+
+    }
+ }
+}

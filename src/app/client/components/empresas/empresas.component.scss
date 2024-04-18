@@ -1,0 +1,113 @@
+.empresas {
+  &__title {
+    margin-bottom: 4rem;
+    p {
+      color: #202220;
+      text-align: center;
+      font-family: Quicksand;
+      font-size: 3rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 120%;
+      /* 57.6px */
+      letter-spacing: -0.075rem;
+    }
+  }
+
+  &__redes {
+    padding: 2.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+    }
+
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+}
+
+
+.slider {
+  width: 80vw;
+  height: auto;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider .slide-track {
+  display: flex;
+  animation: scroll 40s linear infinite;
+  -webkit-animation: scroll 40s linear infinite;
+  width: calc(200px * 34);
+  position: relative;
+}
+
+.slider .slide {
+  width: 200px;
+
+  @media (max-width: 1000px) {
+    width: 150px;
+  }
+
+  @media (max-width: 600px) {
+    width: 100px;
+  }
+}
+
+.slider .slide img {
+  width: 80%;
+}
+
+.slider::before,
+.slider::after {
+  position: absolute;
+  top: 0;
+  width: 75px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+
+  @media (max-width: 420px) {
+    width: 50px;
+  }
+}
+
+.slider::before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.slider::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateX(calc(-200px * 17));
+    transform: translateX(calc(-200px * 17));
+
+    @media (max-width: 1000px) {
+      -webkit-transform: translateX(calc(-150px * 17));
+      transform: translateX(calc(-150px * 17));
+    }
+
+    @media (max-width: 600px) {
+      -webkit-transform: translateX(calc(-100px * 17));
+      transform: translateX(calc(-100px * 17));
+    }
+  }
+}
