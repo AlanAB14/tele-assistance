@@ -28,6 +28,9 @@
       list-style: none;
 
       li {
+        a {
+          cursor: pointer;
+        }
         &:not(:last-of-type) {
           margin-right: 3.125rem;
         }

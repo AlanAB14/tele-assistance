@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, signal } from '@angular/core';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -10,6 +10,10 @@ import { PoliticasComponent } from './components/politicas/politicas.component';
 import { NumbersComponent } from './components/numbers/numbers.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import gsap from 'gsap';
+gsap.registerPlugin(ScrollToPlugin);
 
 @Component({
   selector: 'app-layout',
@@ -31,4 +35,33 @@ import { ContactoComponent } from './components/contacto/contacto.component';
   styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class LayoutComponent { }
+export default class LayoutComponent implements AfterViewInit {
+  @ViewChild('layoutBody') layoutBody!: ElementRef;
+  @ViewChild('servicios') servicios!: ElementRef;
+  @ViewChild('contacto') contacto!: ElementRef;
+  targetOffset: any = signal(null);
+  cargando: any = signal(true);
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.cargando.set(false)
+    }, 1000);
+  }
+  
+  goTo(item: any) {
+    let paddingOffset = this.layoutBody.nativeElement.getBoundingClientRect().top;
+    console.log(paddingOffset)
+    if (item === 'servicios') {
+      const targetElement = this.servicios.nativeElement;
+      this.targetOffset.set(targetElement.offsetTop - 233 )
+    }else if(item === 'contacto') {
+      const targetElement = this.contacto.nativeElement;
+      this.targetOffset.set(targetElement.offsetTop - 250 )
+    }
+    // Realizamos el desplazamiento suave utilizando GSAP
+    gsap.to(window , {
+      duration: 1, // Duración de la animación en segundos
+      scrollTo: this.targetOffset
+    });
+  }
+}

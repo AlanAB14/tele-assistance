@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -15,9 +15,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
     <div class="navbar__items">
       <ul>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#">Ayuda</a></li>
+        <li><a (click)="scrollTo('servicios')">Servicios</a></li>
+        <li><a (click)="scrollTo('contacto')">Contacto</a></li>
+        <li><a (click)="scrollTo('ayuda')">Ayuda</a></li>
       </ul>
     </div>
     <div class="navbar__redes">
@@ -37,4 +37,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavbarComponent { }
+export class NavbarComponent {
+  @Output() sendData = new EventEmitter();
+
+  scrollTo(place: string) {
+    this.sendData.emit(place)
+  }
+}

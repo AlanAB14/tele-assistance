@@ -1,5 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-beneficios',
@@ -9,7 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   ],
   template: `
   
-  <div class="beneficios">
+  <div class="beneficios" #beneficios>
     <div class="beneficios__text">
       <p>Beneficios de tercerizar tus operaciones en nuestro Contact Center</p>
     </div>
@@ -34,7 +36,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './beneficios.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BeneficiosComponent {
+export class BeneficiosComponent implements AfterViewInit {
   cards: any[] = [
     {
       img: 'assets/imgs/beneficios/rrhh.svg',
@@ -57,4 +59,28 @@ export class BeneficiosComponent {
       text: 'Contamos con mediosde cobros electrónicos,para comodidad denuestros clientes.'
     }
   ]
+
+  @ViewChild('beneficios') beneficios!: ElementRef;
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+
+  ngAfterViewInit(): void {
+    gsap.registerPlugin(ScrollTrigger);
+    if (isPlatformBrowser(this.platformId)) {
+      gsap.to(".card", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".beneficios",
+          start: "top center", // Comienza la animación cuando el 80% superior del elemento es visible
+          end: "bottom center", // Termina la animación cuando el 20% inferior del elemento es visible
+          // scrub: true, // Hace que la animación se sincronice con el desplazamiento
+          markers: true,
+
+
+        }
+      });
+
+    }
+  }
 }

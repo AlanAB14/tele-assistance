@@ -1,18 +1,31 @@
-<div class="layout__navbar">
-    <app-navbar />
-</div>
+<div class="animate__animated animate__fadeIn page-content layout">
+    <div class="layout__navbar">
+        <app-navbar (sendData)="goTo($event)" />
+    </div>
+    
+    <div class="layout__body" #layoutBody>
+        <app-header />
+        <!-- <div #servicios> -->
+            <app-linea-section />
+        <!-- </div> -->
+        <app-instalaciones />
+        <app-beneficios />
+        <app-politicas />
+        <app-numbers />
+        <app-empresas />
+        <div #contacto>
+            <app-contacto />
+        </div>
+    </div>
+    
+    <div class="layout__footer">
+        <app-footer />
+    </div>
 
-<div class="layout__body">
-    <app-header />
-    <app-linea-section />
-    <app-instalaciones />
-    <app-beneficios />
-    <app-politicas />
-    <app-numbers />
-    <app-empresas />
-    <app-contacto />
-</div>
-
-<div class="layout__footer">
-    <app-footer />
+    @if (cargando()) {
+        <div class="loader-section">
+            <div class="loader">
+            </div>
+        </div>
+    }
 </div>

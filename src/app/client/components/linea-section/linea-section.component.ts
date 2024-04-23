@@ -1,5 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Inject, OnInit, Output, PLATFORM_ID } from '@angular/core';
+
 
 @Component({
   selector: 'app-linea-section',
@@ -25,7 +26,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
     <div class="linea-section__video">
-      <img src="assets/imgs/office-img.svg" alt="office">
+      <img src="assets/imgs/office.png" alt="office">
     </div>
     <div class="linea-section__services">
       <div class="info-principal">
@@ -41,7 +42,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div class="cards">
 
       @for (item of cards; track $index) {
-        <div class="card">
+        <div class="card-servicio">
           <div class="image">
             <img [src]="item.img" alt="img-service">
           </div>
@@ -63,8 +64,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './linea-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LineaSectionComponent {
-  
+export class LineaSectionComponent   {
+  // @Output() sendData = new EventEmitter();
+
   cards: any[] = [
     {
       img: "assets/imgs/servicios/contact-center.svg",
@@ -82,4 +84,8 @@ export class LineaSectionComponent {
       text: "Brindamos servicio de grúas para traslado y auxilio vehicular. Contamos con una amplia red de prestadores en Argentina y en países limítrofes. Atendemos a compañías de seguros y clientes particulares."
     }
   ]
+
+
+
+  
 }
