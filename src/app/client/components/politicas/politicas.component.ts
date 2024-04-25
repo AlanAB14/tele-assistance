@@ -1,5 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-politicas',
@@ -18,7 +20,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
     <div class="politicas__cards">
       @for (item of politicas; track $index) {
-        <div class="card">
+        <div class="card" [ngClass]="{'card-izquierda': $index % 2 === 0, 'card-derecha': $index % 2 !== 0}">
           <div class="icon">
             <div class="icon-logo" [style.background-color]="item.color">
               <img src="assets/imgs/politicas/politicas-icon.svg" alt="politicas">
@@ -41,7 +43,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './politicas.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PoliticasComponent {
+export class PoliticasComponent implements AfterViewInit{
   politicas: any[] = [
     {
       color: 'rgba(253, 173, 87, 0.65)',
@@ -73,5 +75,65 @@ export class PoliticasComponent {
       title: 'Contribuir',
       text: 'de manera activa y responsable con el desarrollo sustentable.'
     },
-  ]
+  ];
+
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) { }
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const images = this.elementRef.nativeElement.querySelectorAll('img');
+      let imagesLoaded = 0;
+
+      const checkImagesLoaded = () => {
+        imagesLoaded++;
+        if (imagesLoaded === images.length) {
+          this.initAnimation();
+        }
+      };
+
+      images.forEach((img: HTMLImageElement) => {
+        if (img.complete) {
+          checkImagesLoaded();
+        } else {
+          img.addEventListener('load', checkImagesLoaded);
+        }
+      });
+    }
+  }
+
+  initAnimation(): void {
+    gsap.registerPlugin(ScrollTrigger);
+    const cardsIzquierda = this.elementRef.nativeElement.querySelectorAll('.card-izquierda');
+    const cardsDerecha = this.elementRef.nativeElement.querySelectorAll('.card-derecha');
+
+    cardsIzquierda.forEach((card: HTMLElement, index: number) => {
+      gsap.to(card, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".politicas",
+          start: "top center", // Comienza la animación cuando el 80% superior del elemento es visible
+          end: "bottom center", // Termina la animación cuando el 20% inferior del elemento es visible
+          // scrub: true, // Hace que la animación se sincronice con el desplazamiento
+        },
+        delay: index * 0.15 // Aplica un retraso incremental
+      });
+    });
+
+    cardsDerecha.forEach((card: HTMLElement, index: number) => {
+      gsap.to(card, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".politicas",
+          start: "top center", // Comienza la animación cuando el 80% superior del elemento es visible
+          end: "bottom center", // Termina la animación cuando el 20% inferior del elemento es visible
+          // scrub: true, // Hace que la animación se sincronice con el desplazamiento
+        },
+        delay: index * 0.15 // Aplica un retraso incremental
+      });
+    });
+  }
 }

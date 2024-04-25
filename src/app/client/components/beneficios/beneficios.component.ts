@@ -61,26 +61,47 @@ export class BeneficiosComponent implements AfterViewInit {
   ]
 
   @ViewChild('beneficios') beneficios!: ElementRef;
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngAfterViewInit(): void {
-    gsap.registerPlugin(ScrollTrigger);
     if (isPlatformBrowser(this.platformId)) {
-      gsap.to(".card", {
+      const images = this.elementRef.nativeElement.querySelectorAll('img');
+      let imagesLoaded = 0;
+
+      const checkImagesLoaded = () => {
+        imagesLoaded++;
+        if (imagesLoaded === images.length) {
+          this.initAnimation();
+        }
+      };
+
+      images.forEach((img: HTMLImageElement) => {
+        if (img.complete) {
+          checkImagesLoaded();
+        } else {
+          img.addEventListener('load', checkImagesLoaded);
+        }
+      });
+    }
+  }
+
+  initAnimation(): void {
+    gsap.registerPlugin(ScrollTrigger);
+    const cards = this.elementRef.nativeElement.querySelectorAll('.card');
+
+    cards.forEach((card: HTMLElement, index: number) => {
+      gsap.to(card, {
         opacity: 1,
-        y: 0,
+        x: 0,
         duration: 1,
         scrollTrigger: {
-          trigger: ".beneficios",
+          trigger: ".beneficios__cards",
           start: "top center", // Comienza la animación cuando el 80% superior del elemento es visible
           end: "bottom center", // Termina la animación cuando el 20% inferior del elemento es visible
           // scrub: true, // Hace que la animación se sincronice con el desplazamiento
-          markers: true,
-
-
-        }
+        },
+        delay: index * 0.2 // Aplica un retraso incremental
       });
-
-    }
+    });
   }
 }

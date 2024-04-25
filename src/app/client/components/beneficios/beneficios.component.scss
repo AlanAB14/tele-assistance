@@ -1,5 +1,7 @@
 .beneficios {
   padding: 6.375rem 8.125rem 9.625rem 8.125rem;
+  overflow: hidden;
+
 
   &__text {
     overflow: hidden;
@@ -31,6 +33,9 @@
       background: #FFF;
       filter: drop-shadow(0px 8px 60px rgba(0, 0, 0, 0.08));
       transition: background .2s;
+
+      opacity: 0;
+      transform: translateX(20rem);
 
       &:not(:last-of-type) {
         margin-right: 1rem;

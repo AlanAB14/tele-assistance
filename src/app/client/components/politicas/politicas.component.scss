@@ -2,7 +2,7 @@
   padding: 0 12.5rem;
   display: flex;
   flex-direction: column;
-
+  
   &__title {
     margin-bottom: 1.25rem;
 
@@ -38,12 +38,22 @@
     grid-template-columns: repeat(auto-fit, minmax(740px, 1fr));
     gap: 1.375rem;
 
+    .card-izquierda {
+      transform: translateX(-10rem);
+    }
+
+    .card-derecha {
+      transform: translateX(10rem);
+    }
+
     .card {
       padding: 1.5625rem;
       display: flex;
       border-radius: .9375rem;
       border: 1px solid #DCDFE5;
       background: #FFF;
+
+      opacity: 0;
 
       .icon {
         display: flex;

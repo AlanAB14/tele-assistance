@@ -1,5 +1,7 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Inject, OnInit, Output, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 
 @Component({
@@ -22,7 +24,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Inject
 
       <div class="certification">
         <p>Certificación de Calidad</p>
-        <img src="assets/imgs/certificacion-calidad.svg" alt="certificacion">
+        <img src="assets/imgs/certificacion-calidad.png" alt="certificacion">
       </div>
     </div>
     <div class="linea-section__video">
@@ -39,8 +41,8 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Inject
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
         </div>
       </div>
-      <div class="cards">
 
+      <div class="cards">
       @for (item of cards; track $index) {
         <div class="card-servicio">
           <div class="image">
@@ -64,8 +66,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Inject
   styleUrl: './linea-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LineaSectionComponent   {
-  // @Output() sendData = new EventEmitter();
+export class LineaSectionComponent implements AfterViewInit {
 
   cards: any[] = [
     {
@@ -85,7 +86,48 @@ export class LineaSectionComponent   {
     }
   ]
 
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) { }
 
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const images = this.elementRef.nativeElement.querySelectorAll('img');
+      let imagesLoaded = 0;
 
-  
+      const checkImagesLoaded = () => {
+        imagesLoaded++;
+        if (imagesLoaded === images.length) {
+          this.initAnimation();
+        }
+      };
+
+      images.forEach((img: HTMLImageElement) => {
+        if (img.complete) {
+          checkImagesLoaded();
+        } else {
+          img.addEventListener('load', checkImagesLoaded);
+        }
+      });
+    }
+  }
+
+  initAnimation(): void {
+    gsap.registerPlugin(ScrollTrigger);
+    const cards = this.elementRef.nativeElement.querySelectorAll('.card-servicio');
+
+    cards.forEach((card: HTMLElement, index: number) => {
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".linea-section__services",
+          start: "top center", // Comienza la animación cuando el 80% superior del elemento es visible
+          end: "bottom center", // Termina la animación cuando el 20% inferior del elemento es visible
+          // scrub: true, // Hace que la animación se sincronice con el desplazamiento
+        },
+        delay: index * 0.15 // Aplica un retraso incremental
+      });
+    });
+  }
+
 }

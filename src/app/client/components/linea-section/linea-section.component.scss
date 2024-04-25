@@ -121,6 +121,9 @@
         background: #F2F5F6;
         padding: 2rem 1.5rem;
         width: 17.6875rem;
+        min-height: 27.5rem;
+
+        opacity: 0;
 
         &:not(:last-of-type) {
           margin-right: 1rem;
