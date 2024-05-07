@@ -22,8 +22,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p><span>En línea</span> con lo que necesitás</p>
         </div>
         <div class="buttons">
-          <button class="btn-primary">Whatsapp con la grua</button>
-          <button class="btn-secondary">Quiero ser prestador de gruas</button>
+          <button class="btn-primary">Whatsapp con la grúa</button>
+          <button class="btn-secondary">Quiero ser prestador de grúas</button>
         </div>
       </div>
       <div class="header__content__image">

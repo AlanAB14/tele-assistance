@@ -8,6 +8,7 @@
   &__header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .title {
       display: flex;
@@ -58,6 +59,11 @@
   &__images {
     display: flex;
     margin-top: 2.1875rem;
+    justify-content: space-between;
+
+    swiper-container {
+      width: 100%;
+    }
 
     .images-instalaciones {
       opacity: 0;
@@ -67,6 +73,16 @@
       width: 31.1189rem;
       height: 21.875rem;
       border-radius: .75rem;
+
+      @media (max-width: 1530px) {
+        width: 28.1189rem;
+        height: auto;
+      }
+
+      @media (max-width: 1410px) {
+        width: 25.1189rem;
+        height: auto;
+      }
 
       &:not(:last-of-type) {
         margin-right: 2.0381rem;
@@ -85,6 +101,19 @@
 
     img {
       width: 17.875rem;
+
+      @media (max-width: 1530px) {
+        width: 15.875rem;
+      }
+
+      @media (max-width: 1410px) {
+        width: 12.875rem;
+      }
     }
   }
+}
+
+swiper-slide {
+  display: flex;
+  justify-content: center;
 }

@@ -23,7 +23,7 @@ import Style from 'ol/style/Style';
   <div class="contacto">
     <div class="contacto-info">
       <p class="title">Contacto Comercial:</p>
-      <p class="info"><span>0800 555 8353</span> | info"&#64;"<span>teleassistance</span>.com.ar</p>
+      <p class="info"><span>0800 555 8353</span> | info&#64;<span>teleassistance</span>.com.ar</p>
     </div>
 
     <div class="contacto-section">

@@ -1,10 +1,22 @@
 .linea-section {
-  padding: 7.8125rem 12.5rem 0 12.5rem;
+  padding: 7.8125rem 12.5rem 6.25rem 12.5rem;
+
+  @media (max-width: 1360px) {
+    padding: 7.8125rem 8.5rem 6.25rem 8.5rem;
+  }
+
+  @media (max-width: 1210px) {
+    padding: 5.8125rem 6.5rem 5.25rem 6.5rem;
+  }
 
   &__title {
     display: flex;
     justify-content: space-between;
     align-items: end;
+
+    @media (max-width: 880px) {
+      flex-wrap: wrap;
+    }
 
     .title {
       color: #000;
@@ -13,6 +25,14 @@
       font-style: normal;
       font-weight: 700;
       letter-spacing: -1.2px;
+
+      @media (max-width: 1110px) {
+        font-size: 2.75rem;
+      }
+
+      @media (max-width: 990px) {
+        font-size: 2rem;
+      }
 
       span {
         color: #009CA7;
@@ -28,6 +48,13 @@
 
       max-width: 24.5rem;
 
+      @media (max-width: 1110px) {
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 880px) {
+        margin-left: 1rem;
+      }
 
       span {
         font-weight: 700;
@@ -46,10 +73,21 @@
         font-size: 1rem;
         font-style: normal;
         font-weight: 700;
+        text-align: end;
+      }
+
+      @media (max-width: 880px) {
+        margin-left: auto;
+        margin-top: .5rem;
       }
 
       img {
         width: 12.5rem;
+
+        @media (max-width: 1200px) {
+          width: 7.5rem;
+        }
+
       }
     }
   }
@@ -65,14 +103,28 @@
   }
 
   &__services {
-    padding: 6.25rem 9.375rem;
+    padding: 6.25rem 9.375rem 0 9.375rem;
 
     display: flex;
+
+    @media (max-width: 1550px) {
+      padding: 5.25rem 6.375rem 0 6.375rem;
+    }
+
+    @media (max-width: 1470px) {
+      padding: 1.25rem 2rem 0 2rem;
+    }
+
+    @media (max-width: 1260px) {
+      padding: 1.25rem 0rem 0 0rem;
+    }
 
     .info-principal {
       display: flex;
       flex-direction: column;
-      margin-right: 4rem;
+      margin-right: 3rem;
+      width: 17.6875rem;
+
 
       .intro {
         color: #FFF;
@@ -113,8 +165,11 @@
     }
 
     .cards {
-      display: flex;
-
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(auto-fit, minmax(17.6875rem, 1fr));
+      gap: 1rem;
+      justify-items: center;
 
       .card-servicio {
         border-radius: 1rem;
@@ -125,12 +180,9 @@
 
         opacity: 0;
 
-        &:not(:last-of-type) {
-          margin-right: 1rem;
-        }
-
         .image {
           margin-bottom: .625rem;
+
           img {
             height: 5.1875rem;
             width: auto;
@@ -167,4 +219,29 @@
       }
     }
   }
+}
+
+.d-desktop {
+  display: grid !important;
+
+  @media (max-width: 1140px) {
+    display: none !important;
+  }
+}
+
+.d-mobile {
+  display: none !important;
+
+  @media (max-width: 1140px) {
+    display: block !important;
+    max-width: 54rem;
+  }
+  @media (max-width: 1050px) {
+    max-width: 70%;
+  }
+}
+
+swiper-slide {
+  display: flex;
+  justify-content: center;
 }

@@ -41,22 +41,22 @@ export class BeneficiosComponent implements AfterViewInit {
     {
       img: 'assets/imgs/beneficios/rrhh.svg',
       title: 'Recursos Humanos',
-      text: 'Contamos con personal expertoen atención telefónica,altamente capacitado y bilingüe.'
+      text: 'Contamos con personal experto en atención telefónica, altamente capacitado y bilingüe.'
     },
     {
       img: 'assets/imgs/beneficios/tecnologia.svg',
       title: 'Tecnología',
-      text: 'Contamos con la másavanzada tecnología para garantizarla efectividad de nuestro trabajo.'
+      text: 'Contamos con la más avanzada tecnología para garantizar la efectividad de nuestro trabajo.'
     },
     {
       img: 'assets/imgs/beneficios/practicas.svg',
       title: 'Mejoras Prácticas',
-      text: 'Nuestras prácticas y profesionales se caracterizanpor la eficacia y el poderde resolución.'
+      text: 'Nuestras prácticas y profesionales se caracterizan por la eficacia y el poder de resolución.'
     },
     {
       img: 'assets/imgs/beneficios/cobros.svg',
       title: 'Cobros Electrónicos',
-      text: 'Contamos con mediosde cobros electrónicos,para comodidad denuestros clientes.'
+      text: 'Contamos con medios de cobros electrónicos, para comodidad de nuestros clientes.'
     }
   ]
 

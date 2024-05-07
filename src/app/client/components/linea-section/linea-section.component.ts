@@ -1,8 +1,10 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, ElementRef, HostListener, Inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import { SwiperContainer, register } from 'swiper/element/bundle';
+import { SwiperOptions } from 'swiper/types';
+register();
 
 @Component({
   selector: 'app-linea-section',
@@ -10,6 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   imports: [
     CommonModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
   <div class="linea-section">
     <div class="linea-section__title">
@@ -19,7 +22,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
       </div>
       
       <div class="subtitle">
-        <p>TeleAssistance es un servicio de asistencia telefónicadisponible las <span>24 hs, los 365 días del año.</span></p>
+        <p>Tele Assistance es un servicio de asistencia telefónica disponible las <span>24 hs, los 365 días del año.</span></p>
       </div>
 
       <div class="certification">
@@ -38,11 +41,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
           <div>servicios</div>
         </div>
         <div class="subtitle">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <p>Contamos con agentes altamente capacitados y bilingües, y tecnología de última generación para brindar servicios de calidad excepcional.</p>
         </div>
       </div>
 
-      <div class="cards">
+      <div class="cards d-desktop">
       @for (item of cards; track $index) {
         <div class="card-servicio">
           <div class="image">
@@ -58,6 +61,27 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
           </div>
         </div>
       }
+    </div>
+    <div class="cards d-mobile">
+      <swiper-container init="false">
+        @for (item of cards; track $index) {
+            <swiper-slide>
+              <div class="card-servicio">
+                <div class="image">
+                  <img [src]="item.img" alt="img-service">
+                </div>
+                <div class="title">
+                  <p>{{ item.title }}</p>
+                </div>
+                <div class="text">
+                  <p>
+                    {{ item.text }}
+                  </p>
+                </div>
+              </div>
+            </swiper-slide>
+          }
+        </swiper-container>
       </div>
     </div>
   </div>
@@ -66,7 +90,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   styleUrl: './linea-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LineaSectionComponent implements AfterViewInit {
+export class LineaSectionComponent implements AfterViewInit, OnInit{
+
+  swiperElement = signal<SwiperContainer | null>(null);
 
   cards: any[] = [
     {
@@ -87,6 +113,15 @@ export class LineaSectionComponent implements AfterViewInit {
   ]
 
   constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) { }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.configSwiper();
+  }
+
+  ngOnInit(): void {
+    this.configSwiper();
+  }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -108,6 +143,29 @@ export class LineaSectionComponent implements AfterViewInit {
         }
       });
     }
+  }
+
+  configSwiper() {
+    const swiperElemConstructor = document.querySelector('swiper-container');
+    const swiperOptions: SwiperOptions = {
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      grabCursor: true,
+      breakpoints: {
+        0: {
+          slidesPerView: 1
+        },
+        1070: {
+          slidesPerView: 2
+        }
+      }
+    };
+    Object.assign(swiperElemConstructor!, swiperOptions);
+    this.swiperElement.set(swiperElemConstructor as SwiperContainer);
+    this.swiperElement()?.initialize();
   }
 
   initAnimation(): void {

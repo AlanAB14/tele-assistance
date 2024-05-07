@@ -1,9 +1,17 @@
 .header {
   background-color: var(--color-primary);
-  padding: 0 11.25rem 7.4375rem 11.25rem;
+  padding: 3rem 11.25rem 5.4375rem 11.25rem;
+
+  @media (max-width: 1360px) {
+    padding: 3rem 7rem 5.4375rem 7rem;
+  }
 
   &__content {
     display: flex;
+
+    @media (max-width: 1500px) {
+      justify-content: space-between;
+    }
 
     &__text {
       .title {
@@ -13,14 +21,30 @@
         margin-right: 1.125rem;
         color: white;
 
+        @media (max-width: 1500px) {
+          font-size: 5.525rem;
+        }
+
+        @media (max-width: 1110px) {
+          font-size: 3.525rem;
+        }
+
         .contact-center {
           transform: translateX(-2rem);
+
+          @media (max-width: 1110px) {
+            transform: translateX(-1rem);
+          }
 
           span {
             color: #FCF594;
             background-color: #835CF3;
             padding: .5rem 2rem;
             border-radius: 100rem;
+
+            @media (max-width: 1110px) {
+              padding: .25rem 1rem;
+            }
           }
         }
       }
@@ -33,6 +57,10 @@
         font-size: 2.5rem;
 
         margin-top: 2.875rem;
+
+        @media (max-width: 885px) {
+          align-items: center;
+        }
 
         img {
           margin-right: 2.1875rem;
@@ -70,6 +98,20 @@
           margin-right: 1.875rem;
 
           transition: all .2s;
+
+          @media (max-width: 1500px) {
+            padding: 1.5rem 2rem;
+          }
+
+          @media (max-width: 1260px) {
+            font-size: 1.4rem;
+            padding: 1rem 1.5rem;
+          }
+
+          @media (max-width: 932px) {
+            margin-bottom: 1rem;
+          }
+
           &:hover {
             box-shadow: 0 0 .8rem .2rem rgba(0, 0, 0, 0.10);
           }
@@ -90,6 +132,16 @@
           line-height: normal;
 
           transition: all .2s;
+
+          @media (max-width: 1500px) {
+            padding: 1.5rem 2rem;
+          }
+
+          @media (max-width: 1260px) {
+            font-size: 1.4rem;
+            padding: 1rem 1.5rem;
+          }
+
           &:hover {
             box-shadow: 0 0 .8rem .2rem rgba(0, 0, 0, 0.10);
           }
@@ -99,8 +151,29 @@
 
 
     &__image {
+      @media (max-width: 885px) {
+        display: flex;
+        align-items: center;
+      }
+
       img {
         width: 29.81rem;
+
+        @media (max-width: 1500px) {
+          width: 27rem;
+        }
+
+        @media (max-width: 1110px) {
+          width: 22rem;
+        }
+
+        @media (max-width: 1010px) {
+          width: 16rem;
+        }
+
+        @media (max-width: 768px) {
+          display: none;
+        }
       }
     }
   }

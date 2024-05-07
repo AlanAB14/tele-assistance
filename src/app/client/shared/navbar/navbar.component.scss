@@ -9,7 +9,11 @@
   position: sticky;
   top: 0;
 
-  padding: 5.625rem 11.25rem;
+  padding: 3.625rem 11.25rem;
+
+  @media (max-width: 1360px) {
+    padding: 3.625rem 7rem;
+  }
 
   a {
     text-decoration: none;
@@ -31,6 +35,7 @@
         a {
           cursor: pointer;
         }
+
         &:not(:last-of-type) {
           margin-right: 3.125rem;
         }
@@ -50,5 +55,5 @@
       }
 
     }
- }
+  }
 }
