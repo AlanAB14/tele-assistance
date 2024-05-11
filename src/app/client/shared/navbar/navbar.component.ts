@@ -82,7 +82,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
         <div class="icon-bar" [@hamburguerX]="isHamburguer ? 'hamburguer' : 'topX'"></div>
         <div class="icon-bar" [@hamburguerX]="isHamburguer ? 'hamburguer' : 'hide'"></div>
         <div class="icon-bar" [@hamburguerX]="isHamburguer ? 'hamburguer' : 'bottomX'"></div>
-    </div>
+      </div>
       </div>
     </div>
 
@@ -93,7 +93,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
             <li><a (click)="scrollToClose('ayuda')">Ayuda</a></li>
         </ul>
 
-        <div class="navbar-responsive-redes">
+        <div class="navbar-responsive-redes animate__animated animate__fadeIn animate__faster" *ngIf="isExpanded">
           <div class="navbar__redes">
             <a href="#">
               <img src="assets/imgs/redes/ln-logo.png" alt="x-logo">

@@ -1,6 +1,14 @@
 .layout {
   position: relative;
-  padding-top: 10.555rem;
+  padding-top: 10.32rem;
+  
+  @media (max-width: 768px) {
+    padding-top: 6.2rem;
+  }
+
+  @media (max-width: 630px) {
+    padding-top: 6rem;
+  }
 
   &__navbar {
     position: fixed;

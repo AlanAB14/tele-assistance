@@ -1,9 +1,11 @@
 @if (cargando()) {
-<div class="loader-section">
-    <div class="loader">
+    <div class="loader-section">
+        <div class="loader">
+        </div>
     </div>
-</div>
-} @else {
+}
+
+
 <div class="animate__animated animate__fadeIn page-content layout">
     <div class="layout__navbar">
         <app-navbar (sendData)="goTo($event)" />
@@ -17,10 +19,10 @@
         <app-instalaciones />
         <app-beneficios />
         <app-politicas />
-        <app-numbers />
+        <app-numbers (cargandoEvent)="isLoading($event)" />
         <app-empresas />
         <div #contacto>
-            <app-contacto />
+            <app-contacto (cargandoEvent)="isLoading($event)" />
         </div>
     </div>
 
@@ -28,4 +30,3 @@
         <app-footer />
     </div>
 </div>
-}
