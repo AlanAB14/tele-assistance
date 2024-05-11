@@ -13,17 +13,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="header__content">
       <div class="header__content__text">
         <div class="title">
-          <div>Servicio de</div>
-          <div class="contact-center"><span>Contact Center</span></div>
-          <div>y Grúas las 24hs.</div>
+          <div lang="es" translate="no">Servicio de</div>
+          <div class="contact-center"><span lang="es" translate="no">Contact Center</span></div>
+          <div lang="es" translate="no">y Grúas las 24hs.</div>
         </div>
         <div class="subtitle">
           <img src="assets/imgs/dialog-logo.svg" alt="dialog">
-          <p><span>En línea</span> con lo que necesitás</p>
+          <p lang="es" translate="no"><span>En línea</span> con lo que necesitás</p>
         </div>
         <div class="buttons">
-          <button class="btn-primary">Whatsapp con la grúa</button>
-          <button class="btn-secondary">Quiero ser prestador de grúas</button>
+          <button class="btn-primary" lang="es" translate="no">Whatsapp con la grúa</button>
+          <button class="btn-secondary" lang="es" translate="no">Quiero ser prestador de grúas</button>
         </div>
       </div>
       <div class="header__content__image">

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Feature } from 'ol';
 import Map from 'ol/Map';
@@ -7,6 +7,7 @@ import View from 'ol/View';
 import { Point } from 'ol/geom';
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
+import DragPan from 'ol/interaction/DragPan';
 import { fromLonLat } from 'ol/proj';
 import VectorSource from 'ol/source/Vector';
 import XYZ from 'ol/source/XYZ';
@@ -73,8 +74,15 @@ export class ContactoComponent implements OnInit {
   public map!: Map;
   private fb = inject(FormBuilder)
   private contactService = inject(ContactsService)
+  screenWidth!: any;
+  zoom: number = 17;
   @Output() cargandoEvent = new EventEmitter();
 
+  @HostListener('window:resize', ['$event'])
+  getScreenWidth() {
+    this.screenWidth = window.innerWidth;
+    this.setZoom();
+  }
 
   contactForm: FormGroup = this.fb.group({
     nombre: ['', Validators.required],
@@ -83,6 +91,25 @@ export class ContactoComponent implements OnInit {
     mensaje: ['', Validators.required],
   })
 
+  setZoom() {
+    if (this.screenWidth < 768) {
+      this.zoom = 15;
+      this.map.getView().setZoom(this.zoom);
+      this.map.getInteractions().forEach(function (interaction) {
+        if (interaction instanceof DragPan) {
+          interaction.setActive(false);
+        }
+      });
+    } else {
+      this.zoom = 17;
+      this.map.getView().setZoom(this.zoom);
+      this.map.getInteractions().forEach(function (interaction) {
+        if (interaction instanceof DragPan) {
+          interaction.setActive(true);
+        }
+      });
+    }
+  }
 
   ngOnInit(): void {
     const iconFeature = new Feature({
@@ -122,21 +149,23 @@ export class ContactoComponent implements OnInit {
       ],
       view: new View({
         center: fromLonLat([-61.9945434, -33.729229]),
-        zoom: 17,
+        zoom: this.zoom,
       })
     });
+
+    this.setZoom();
   }
 
   sendData() {
     const body = {
-      name: `${ this.contactForm.value.nombre } ${ this.contactForm.value.apellido }`,
+      name: `${this.contactForm.value.nombre} ${this.contactForm.value.apellido}`,
       email: this.contactForm.value.email,
       message: this.contactForm.value.mensaje
     }
     console.log(body);
     this.cargandoEvent.emit(true);
     this.contactService.setContact(body)
-      .subscribe( resp => {
+      .subscribe(resp => {
         console.log(resp);
         this.cargandoEvent.emit(false);
         Swal.fire('Mensaje enviado con éxito!', '', 'success');
@@ -147,6 +176,6 @@ export class ContactoComponent implements OnInit {
         console.log('Error al guardar contacto', error);
         this.contactForm.reset()
       })
-    
+
   }
 }
