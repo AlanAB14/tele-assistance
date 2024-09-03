@@ -41,7 +41,7 @@
 
     .link {
       display: flex;
-
+      align-items: center;
       p {
         color: #312E81;
         font-family: Poppins;
@@ -52,6 +52,10 @@
         /* 21.6px */
         letter-spacing: -0.0281rem;
         margin-right: .625rem;
+        white-space: nowrap;
+      }
+      img {
+        width: 1.1875rem;
       }
     }
   }
@@ -94,6 +98,7 @@
     position: absolute;
     bottom: 1.5rem;
     right: 7.0625rem;
+    z-index: 1;
 
     .images-instalaciones-logo {
       opacity: 0;

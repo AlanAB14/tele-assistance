@@ -13,6 +13,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import gsap from 'gsap';
+import { GruasComponent } from "./components/gruas/gruas.component";
 gsap.registerPlugin(ScrollToPlugin);
 
 @Component({
@@ -29,8 +30,9 @@ gsap.registerPlugin(ScrollToPlugin);
     PoliticasComponent,
     NumbersComponent,
     EmpresasComponent,
-    ContactoComponent
-  ],
+    ContactoComponent,
+    GruasComponent
+],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

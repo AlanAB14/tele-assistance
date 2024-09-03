@@ -56,6 +56,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
       <ul>
         <li><a (click)="scrollTo('servicios')">Servicios</a></li>
         <li><a (click)="scrollTo('contacto')">Contacto</a></li>
+        <li><a (click)="scrollTo('grua')">Grúa</a></li>
         <li><a (click)="scrollTo('ayuda')">Ayuda</a></li>
       </ul>
     </div>
