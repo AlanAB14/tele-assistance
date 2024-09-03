@@ -15,7 +15,7 @@
     padding: 3.625rem 7rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 840px) {
     display: none;
   }
 
@@ -66,19 +66,27 @@
   background-color: var(--color-primary);
   display: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 840px) {
     display: block;
   }
 
   &__top {
     display: flex;
-    padding: .75rem 0;
+    padding: 1.5rem 0;
     align-items: center;
     justify-content: space-between;
 
     img {
       height: 3rem;
-      margin-left: 1rem;
+      margin-left: 4.5rem;
+      
+      @media (max-width: 630px) {
+        height: 2.5rem;
+      }
+
+      @media (max-width: 400px) {
+        margin-left: 2.5rem;
+      }
     }
 
 
@@ -140,7 +148,11 @@
 
   .btn {
     cursor: pointer;
-    margin-right: 1rem;
+    margin-right: 4.5rem;
+    
+    @media (max-width: 400px) {
+      margin-right: 2.5rem;
+    }
   }
 
   .icon-bar {

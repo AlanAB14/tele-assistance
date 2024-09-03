@@ -47,6 +47,7 @@ export class EmpresasComponent {
     { src: 'assets/imgs/instituciones/asa.jpg', alt: 'asa'},
     { src: 'assets/imgs/instituciones/asoc-mvt.jpg', alt: 'asoc-mvt'},
     { src: 'assets/imgs/instituciones/coop.jpg', alt: 'coop'},
+    { src: 'assets/imgs/instituciones/friar.jpg', alt: 'friar'},
     { src: 'assets/imgs/instituciones/dvl.jpg', alt: 'dvl'},
     { src: 'assets/imgs/instituciones/facilassist.jpg', alt: 'facilassist'},
     { src: 'assets/imgs/instituciones/femedica.jpg', alt: 'femedica'},

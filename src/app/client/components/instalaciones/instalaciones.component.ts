@@ -28,7 +28,7 @@ register();
         </div>
       </div>
       <div class="instalaciones__section__images" >
-        <swiper-container class="swp" autoplay-delay="2500" autoplay-disable-on-interaction="false" [slidesPerView]="slidesPerView">
+        <swiper-container class="swp" autoplay-delay="2500" loop="true" autoplay-disable-on-interaction="false" [slidesPerView]="slidesPerView">
           @for (item of images; track $index) {
             <swiper-slide>
               <img class="images-instalaciones" [src]="item.img" alt="instalaciones-1">
@@ -99,6 +99,7 @@ export class InstalacionesComponent implements AfterViewInit, OnInit {
   }
 
   setSlides() {
+    this.screenWidth = window.innerWidth;
     if (this.screenWidth > 1300) {
       this.slidesPerView = 3
     }
@@ -106,6 +107,11 @@ export class InstalacionesComponent implements AfterViewInit, OnInit {
     if (this.screenWidth < 1300) {
       this.slidesPerView = 2
     }
+
+    if (this.screenWidth < 920) {
+      this.slidesPerView = 1
+    }
+    
     this.cdf.detectChanges()
   }
 

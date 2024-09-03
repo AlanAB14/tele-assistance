@@ -4,4 +4,21 @@
   color: white;
   font-size: 1rem;
   font-family: 'Lato';
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__trabaja {
+    display: flex;
+
+    .trabaja {
+      font-weight: bold;
+      text-decoration: underline;
+      
+    }
+    img {
+      margin-right: .25rem;
+    }
+  }
 }

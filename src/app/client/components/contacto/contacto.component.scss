@@ -15,6 +15,22 @@
     padding: 3.75rem 12.5rem;
     z-index: 1;
 
+    @media (max-width: 1080px) {
+      padding: 3rem 10rem;
+    }
+
+    @media (max-width: 1000px) {
+      padding: 3rem 6rem;
+    }
+
+    @media (max-width: 900px) {
+      padding: 3rem 3rem;
+    }
+    
+    @media (max-width: 550px) {
+      padding: 2.5rem 2.5rem;
+    }
+
     .title {
       color: #FFF;
       text-align: center;
@@ -26,6 +42,18 @@
       /* 77.778% */
       text-decoration-line: underline;
       margin-bottom: 2.375rem;
+
+      @media (max-width: 900px) {
+        font-size: 1.8rem;
+      }
+      
+      @media (max-width: 380px) {
+        margin-bottom: 1.2rem;
+      }
+      
+      @media (max-width: 550px) {
+        font-size: 1.2rem;
+      }
     }
 
     .info {
@@ -37,8 +65,29 @@
       line-height: 120%;
       letter-spacing: -0.0563rem;
 
+      @media (max-width: 900px) {
+        font-size: 1.8rem;
+      }
+
+      @media (max-width: 550px) {
+        font-size: 1.2rem;
+      }
+
       span {
         font-weight: 700;
+        @media (max-width: 550px) {
+          &:first-of-type {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+
+      .line {
+        font-weight: normal;
+        @media (max-width: 550px) {
+          display: none;
+        }
       }
     }
   }
@@ -49,15 +98,36 @@
 
     transform: translateY(-9.375rem);
 
+    @media (max-width: 400px) {
+      width: 100%;
+      border-radius: 0rem;
+    }
+
 
     .contacto-box {
       padding: 10.5rem 6.5rem 3.625rem 6.5rem;
       display: flex;
       flex-direction: column;
 
+      @media (max-width: 1080px) {
+        padding: 10.5rem 5rem 3.625rem 5rem;
+      }
+
+      @media (max-width: 930px) {
+        padding: 12.5rem 4rem 3.625rem 4rem;
+      }
+
+      @media (max-width: 550px) {
+        padding: 12.5rem 7rem 3.625rem 7rem;
+      }
+
 
       .first-section {
         display: flex;
+
+        @media (max-width: 900px) {
+          flex-direction: column;
+        }
 
         .campo-form {
           display: flex;
@@ -66,8 +136,33 @@
 
           min-width: 25rem;
 
+          @media (max-width: 1300px) {
+            min-width: 20rem;
+          }
+
+          @media (max-width: 1000px) {
+            min-width: 18rem;
+          }
+
+
+
           &:not(:last-of-type) {
             margin-right: 1rem;
+
+            @media (max-width: 900px) {
+              margin-right: 0;
+              margin-bottom: 1rem;
+
+              min-width: 40rem;
+            }
+
+            @media (max-width: 700px) {
+              min-width: 30rem;
+            }
+
+            @media (max-width: 550px) {
+              min-width: 100%;
+            }
           }
 
           label {
@@ -135,12 +230,15 @@
           }
         }
       }
+
       .btn-send {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 2.5313rem;
+        
         button {
+          cursor: pointer;
           width: fit-content;
           outline: none;
           border: none;
@@ -154,6 +252,10 @@
           line-height: 150%;
           padding: 1rem 3rem;
           /* 27px */
+
+          &:disabled {
+            cursor: initial;
+          }
         }
       }
     }
@@ -162,5 +264,9 @@
 
 .map {
   width: 100%;
-  height: 600px;
+  height: 37rem;
+
+  @media (max-width: 550px) {
+    height: 30rem;
+  }
 }

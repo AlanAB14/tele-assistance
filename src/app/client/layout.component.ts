@@ -37,18 +37,18 @@ gsap.registerPlugin(ScrollToPlugin);
   styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class LayoutComponent implements AfterViewInit {
+export default class LayoutComponent implements OnInit{
+  ngOnInit(): void {
+    
+  }
+
   @ViewChild('layoutBody') layoutBody!: ElementRef;
   @ViewChild('servicios') servicios!: ElementRef;
   @ViewChild('contacto') contacto!: ElementRef;
+  @ViewChild('grua') grua!: ElementRef;
   targetOffset: any = signal(null);
   cargando: any = signal(true);
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.cargando.set(false)
-    }, 1000);
-  }
   
   goTo(item: any) {
     let paddingOffset = this.layoutBody.nativeElement.getBoundingClientRect().top;
@@ -59,11 +59,19 @@ export default class LayoutComponent implements AfterViewInit {
     }else if(item === 'contacto') {
       const targetElement = this.contacto.nativeElement;
       this.targetOffset.set(targetElement.offsetTop - 250 )
+    }else if(item === 'grua') {
+      const targetElement = this.grua.nativeElement;
+      this.targetOffset.set(targetElement.offsetTop - 250 )
     }
     // Realizamos el desplazamiento suave utilizando GSAP
     gsap.to(window , {
       duration: 1, // Duración de la animación en segundos
       scrollTo: this.targetOffset
     });
+  }
+
+  isLoading(cargando: boolean) {
+    this.cargando.set(cargando);
+    console.log(this.cargando(), 'Signal')
   }
 }

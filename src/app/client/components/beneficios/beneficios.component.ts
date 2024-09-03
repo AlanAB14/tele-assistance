@@ -1,7 +1,10 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import { SwiperContainer, register } from 'swiper/element/bundle';
+register();
 
 @Component({
   selector: 'app-beneficios',
@@ -9,6 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   imports: [
     CommonModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
   
   <div class="beneficios" #beneficios>
@@ -16,27 +20,31 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
       <p>Beneficios de tercerizar tus operaciones en nuestro Contact Center</p>
     </div>
     <div class="beneficios__cards">
+      <swiper-container autoplay-delay="2500" loop="true" autoplay-disable-on-interaction="false" [slidesPerView]="slidesPerView">
       @for (item of cards; track $index) {
-        <div class="card">
-          <div class="icon">
-            <img [src]="item.img" alt="img">
-          </div>
-          <div class="title">
-            <p>{{ item.title }}</p>
-          </div>
-          <div class="text">
-            <p>{{ item.text }}</p>
-          </div>
-        </div>
-      }
+          <swiper-slide>
+            <div class="card">
+              <div class="icon">
+                <img [src]="item.img" alt="img">
+              </div>
+              <div class="title">
+                <p>{{ item.title }}</p>
+              </div>
+              <div class="text">
+                <p>{{ item.text }}</p>
+              </div>
+            </div>
+          </swiper-slide>
+        }
+      </swiper-container>
+      </div>
     </div>
-  </div>
   
   `,
   styleUrl: './beneficios.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BeneficiosComponent implements AfterViewInit {
+export class BeneficiosComponent implements AfterViewInit, OnInit {
   cards: any[] = [
     {
       img: 'assets/imgs/beneficios/rrhh.svg',
@@ -60,8 +68,21 @@ export class BeneficiosComponent implements AfterViewInit {
     }
   ]
 
+  slidesPerView: number = 4;
+  screenWidth!: number;
+
   @ViewChild('beneficios') beneficios!: ElementRef;
-  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object, private cdf: ChangeDetectorRef) { }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenWidth() {
+    this.screenWidth = window.innerWidth;
+    this.setSlides()
+  }
+
+  ngOnInit(): void {
+    this.setSlides()
+  }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -83,6 +104,27 @@ export class BeneficiosComponent implements AfterViewInit {
         }
       });
     }
+  }
+
+  setSlides() {
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth > 1560) {
+      this.slidesPerView = 4
+    }
+
+    if (this.screenWidth < 1560) {
+      this.slidesPerView = 3
+    }
+
+    if (this.screenWidth < 1230) {
+      this.slidesPerView = 2
+    }
+
+    if (this.screenWidth < 900) {
+      this.slidesPerView = 1
+    }
+
+    this.cdf.detectChanges()
   }
 
   initAnimation(): void {

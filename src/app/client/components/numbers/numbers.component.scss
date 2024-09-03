@@ -2,6 +2,13 @@
   padding: 9.375rem 0;
   display: flex;
   justify-content: center;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 5rem 0;
+  }
 
   .number-box {
     display: flex;
@@ -10,6 +17,18 @@
 
     &:not(:last-of-type) {
       margin-right: 6.25rem;
+
+      @media (max-width: 1010px) {
+        margin-right: 2rem;
+      }
+
+      @media (max-width: 960px) {
+        margin-right: 0rem;
+      }
+
+      @media (max-width: 768px) {
+        margin-bottom: 1rem;
+      }
     }
 
     .number-dato {
@@ -21,6 +40,14 @@
       font-weight: 700;
       /* 42.656% */
       letter-spacing: -0.5rem;
+      
+      @media (max-width: 1010px) {
+        font-size: 8.375rem;
+      }
+      
+      @media (max-width: 960px) {
+        font-size: 6.375rem;
+      }
     }
 
     .text {
@@ -33,6 +60,10 @@
       line-height: 1.5rem;
       /* 120% */
       letter-spacing: .0187rem;
+
+      @media (max-width: 960px) {
+        font-size: 1rem;
+      }
 
       span {
         font-weight: 700;

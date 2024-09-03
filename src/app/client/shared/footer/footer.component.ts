@@ -10,8 +10,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
   
   <div class="footer">
+    <div class="footer__tc">
+      Tele Assistance es una unidad de
+      <img src="assets/imgs/tc-logo.png" alt="tc-logo">
+    </div>
     <div class="footer__copy">
       ©2023-2024 TeleAssistance.
+    </div>
+    <div class="footer__trabaja">
+      <img src="assets/imgs/trabaja-nosotros.png" alt="trab">
+      <p class="trabaja">Trabjá con nosotros</p>
     </div>
   </div>
 

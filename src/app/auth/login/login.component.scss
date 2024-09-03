@@ -1,0 +1,58 @@
+.login {
+    background-color: var(--color-primary);
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: unset;
+    font-size: 1.2rem;
+    width: 100%;
+    cursor: pointer;
+    padding: 1rem 0;
+    text-transform: uppercase;
+
+    &:disabled {
+        background-color: grey;
+        cursor: unset;
+    }
+}
+
+section {
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.form-outline {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+
+    input {
+        font-size: 1.4rem;
+        outline: none;
+        padding: .5rem;
+        border: 1px solid grey;
+
+        &:not(:last-of-type) {
+            margin-bottom: 1rem;
+        }
+    }
+
+}
+
+
+
