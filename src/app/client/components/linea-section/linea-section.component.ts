@@ -22,7 +22,7 @@ register();
       </div>
       
       <div class="subtitle">
-        <p>Tele Assistance es un servicio de asistencia telefónica disponible las <span>24 hs, los 365 días del año.</span></p>
+        <p>Tele Assistance es un servicio de asistencia disponible las <span>24 hs, los 365 días del año.</span></p>
       </div>
 
       <div class="certification">
@@ -31,7 +31,7 @@ register();
       </div>
     </div>
     <div class="linea-section__video">
-      <img src="assets/imgs/office.png" alt="office">
+      <img src="assets/imgs/call-center.jpeg" alt="office">
     </div>
     <div class="linea-section__services">
       <div class="info-principal">

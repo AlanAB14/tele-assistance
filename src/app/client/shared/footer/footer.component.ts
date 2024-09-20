@@ -19,7 +19,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
     <div class="footer__trabaja">
       <img src="assets/imgs/trabaja-nosotros.png" alt="trab">
-      <p class="trabaja">Trabjá con nosotros</p>
+      <p class="trabaja">Trabajá con nosotros</p>
     </div>
   </div>
 
