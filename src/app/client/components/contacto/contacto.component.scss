@@ -144,6 +144,10 @@
             min-width: 18rem;
           }
 
+          @media (max-width: 550px) {
+            min-width: 100%;
+          }
+
 
 
           &:not(:last-of-type) {

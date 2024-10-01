@@ -17,10 +17,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="footer__copy">
       ©2023-2024 TeleAssistance.
     </div>
-    <div class="footer__trabaja">
-      <img src="assets/imgs/trabaja-nosotros.png" alt="trab">
-      <p class="trabaja">Trabajá con nosotros</p>
-    </div>
   </div>
 
   `,

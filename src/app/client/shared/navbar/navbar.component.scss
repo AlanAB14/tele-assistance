@@ -15,7 +15,7 @@
     padding: 3.625rem 7rem;
   }
 
-  @media (max-width: 840px) {
+  @media (max-width: 1010px) {
     display: none;
   }
 
@@ -47,6 +47,21 @@
     }
   }
 
+  &__trabaja {
+    display: flex;
+    cursor: pointer;
+
+    .trabaja {
+      font-weight: bold;
+      text-decoration: underline;
+
+    }
+
+    img {
+      margin-right: .25rem;
+    }
+  }
+
   &__redes {
     a {
 
@@ -66,7 +81,7 @@
   background-color: var(--color-primary);
   display: none;
 
-  @media (max-width: 840px) {
+  @media (max-width: 1010px) {
     display: block;
   }
 
@@ -79,7 +94,7 @@
     img {
       height: 3rem;
       margin-left: 4.5rem;
-      
+
       @media (max-width: 630px) {
         height: 2.5rem;
       }
@@ -96,6 +111,27 @@
       justify-content: center;
       align-items: center;
       height: 3rem;
+    }
+  }
+
+  &__trabaja {
+    display: flex;
+    align-items: center;
+    margin-top: 5rem;
+    cursor: pointer;
+    .trabaja {
+      color: white;
+      font-weight: bold;
+      text-decoration: underline;
+      font-size: 1.8rem;
+
+    }
+
+    img {
+      margin-right: .25rem;
+      width: 1.375rem;
+      height: 1.3125rem;
+      transform: scale(1.4);
     }
   }
 
@@ -149,7 +185,7 @@
   .btn {
     cursor: pointer;
     margin-right: 4.5rem;
-    
+
     @media (max-width: 400px) {
       margin-right: 2.5rem;
     }

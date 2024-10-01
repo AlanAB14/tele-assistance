@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -60,6 +61,12 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
         <li><a (click)="scrollTo('ayuda')">Ayuda</a></li>
       </ul>
     </div>
+
+    <div class="navbar__trabaja" (click)="trabajaConNosotros()">
+      <img src="assets/imgs/trabaja-nosotros.png" alt="trab">
+      <p class="trabaja">Trabajá con nosotros</p>
+    </div>
+
     <div class="navbar__redes">
       <a href="#">
         <img src="assets/imgs/redes/ln-logo.png" alt="x-logo">
@@ -94,6 +101,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
             <li><a (click)="scrollToClose('grua')">Grúa</a></li>
             <li><a (click)="scrollToClose('ayuda')">Ayuda</a></li>
         </ul>
+
+        <div class="navbar-responsive__trabaja" (click)="trabajaConNosotros()">
+          <img src="assets/imgs/trabaja-nosotros.png" alt="trab">
+          <p class="trabaja">Trabajá con nosotros</p>
+        </div>
 
         <div class="navbar-responsive-redes animate__animated animate__fadeIn animate__faster" *ngIf="isExpanded">
           <div class="navbar__redes">
@@ -138,5 +150,31 @@ export class NavbarComponent {
 
   toggleMenu() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  trabajaConNosotros() {
+    Swal.fire({
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Quiero enviar mi CV",
+      denyButtonText: `Quiero ser prestador`,
+      denyButtonColor: "#469ed6",
+      cancelButtonText: "Cancelar",
+      imageUrl: "assets/imgs/trabaja-con-nosotros.png"
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        const mailToLink = this.generateMailtoLink("rrhh@tcsa.com.ar", "Solicitud de empleo")
+        window.location.href = mailToLink;
+      } else if (result.isDenied) {
+        const mailToLink = this.generateMailtoLink("prestadores@tcsa.com.ar", "Solicitud de prestador")
+        window.location.href = mailToLink;
+      }
+    });
+  }
+
+
+  generateMailtoLink(to: string, subject: string,): string {
+    return `mailto:${to}?subject=${encodeURIComponent(subject)}`;
   }
 }
