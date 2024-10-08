@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   <div class="gruas-section">
     <div class="gruas-section__title">
       <div class="gruas-title">
-        <p>Gruas</p>
+        <p>Grúas</p>
       </div>
       <div class="gruas-show-more link">
         <p>Conocé más</p>
@@ -21,7 +21,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="gruas-section__body">
       <div class="info">
         <div class="text">
-          <p>Brindamos servicio de grúas para traslado y auxilio vehicular. Contamos con una amplia red de prestadores en Argentina y en países limítrofes, y atendemos a compañías de seguros y clientes particulares.</p>
+          <p>Brindamos servicio de grúas para traslado y auxilio vehicular. Contamos con una amplia red de prestadores en Argentina y en países limítrofes, y atendemos a compañías de seguros, brokers y clientes particulares.</p>
         </div>
         <div class="buttons">
           <button class="btn-primary">Whatsapp con la grúa</button>
