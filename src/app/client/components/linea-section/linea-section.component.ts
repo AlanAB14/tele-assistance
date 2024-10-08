@@ -98,7 +98,7 @@ export class LineaSectionComponent implements AfterViewInit, OnInit{
     {
       img: "assets/imgs/servicios/contact-center.svg",
       title: "Contact Center",
-      text: "Ofrecemos a las empresas de distintos rubros la posibilidad de disponer de nuestro Centro de Atención Telefónica profesional las 24 horas, los 365 del año..."
+      text: "Ofrecemos a las empresas de distintos rubros la posibilidad de disponer de nuestro Centro de Atención profesional las 24 horas, los 365 del año..."
     },
     {
       img: "assets/imgs/servicios/atencion-emergencias.svg",
