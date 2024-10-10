@@ -58,7 +58,7 @@ export class BeneficiosComponent implements AfterViewInit, OnInit {
     },
     {
       img: 'assets/imgs/beneficios/practicas.svg',
-      title: 'Mejoras Prácticas',
+      title: 'Mejores Prácticas',
       text: 'Nuestras prácticas y profesionales se caracterizan por la eficacia y el poder de resolución.'
     },
     {
