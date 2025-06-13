@@ -48,7 +48,7 @@ import Swal from 'sweetalert2';
     ]),
   ],
   template: `
-  
+
   <div class="navbar">
     <div class="navbar__logo">
       <img src="assets/imgs/ta-logo.svg" alt="ta-logo">
@@ -68,13 +68,13 @@ import Swal from 'sweetalert2';
     </div>
 
     <div class="navbar__redes">
-      <a href="#">
+      <a href="https://www.linkedin.com/company/teleassistance-oficial/" target="_blank">
         <img src="assets/imgs/redes/ln-logo.png" alt="x-logo">
       </a>
-      <a href="#">
+      <a href="https://www.facebook.com/p/Tele-Assistance-61551874601317/" target="_blank">
         <img src="assets/imgs/redes/fb-logo.svg" alt="fb-logo">
       </a>
-      <a href="#">
+      <a href="https://www.instagram.com/tele.assistance/" target="_blank">
         <img src="assets/imgs/redes/ig-logo.svg" alt="ig-logo">
       </a>
     </div>
@@ -122,7 +122,7 @@ import Swal from 'sweetalert2';
         </div>
     </div>
   </div>
-  
+
   `,
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

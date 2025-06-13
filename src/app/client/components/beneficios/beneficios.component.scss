@@ -1,7 +1,7 @@
 .beneficios {
   padding: 6.375rem 8.125rem 9.625rem 8.125rem;
   overflow: hidden;
-  
+
   @media (max-width: 768px) {
     padding: 4.375rem 5.125rem 7.625rem 5.125rem;
   }
@@ -48,7 +48,6 @@
     .card {
       padding: 2rem;
       width: 25rem;
-      height: 23.6875rem;
       display: flex;
       flex-direction: column;
       border-radius: 1.5rem;
@@ -91,7 +90,6 @@
       }
 
       .text {
-        p {
           color:  #666;
           font-family: Poppins;
           font-size: .875rem;
@@ -99,7 +97,9 @@
           font-weight: 400;
           line-height: 1.5rem;
           /* 171.429% */
-        }
+          ::ng-deep ul {
+            margin-left: 1rem; // ajustá este valor a gusto
+          }
       }
     }
   }

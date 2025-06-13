@@ -14,7 +14,7 @@ register();
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-  
+
   <div class="beneficios" #beneficios>
     <div class="beneficios__text">
       <p>Beneficios de tercerizar tus operaciones en nuestro Contact Center</p>
@@ -31,7 +31,7 @@ register();
                 <p>{{ item.title }}</p>
               </div>
               <div class="text">
-                <p>{{ item.text }}</p>
+                <div [innerHTML]="item.text"></div>
               </div>
             </div>
           </swiper-slide>
@@ -39,7 +39,7 @@ register();
       </swiper-container>
       </div>
     </div>
-  
+
   `,
   styleUrl: './beneficios.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,22 +49,22 @@ export class BeneficiosComponent implements AfterViewInit, OnInit {
     {
       img: 'assets/imgs/beneficios/rrhh.svg',
       title: 'Recursos Humanos',
-      text: 'Contamos con personal experto en atención telefónica, altamente capacitado y bilingüe.'
+      text: 'Contamos con un equipo humano altamente capacitado, comprometido y con baja rotación. <br> MENOR ROTACIÓN = MAYOR EXPERIENCIA = MEJOR ATENCIÓN.'
     },
     {
       img: 'assets/imgs/beneficios/tecnologia.svg',
       title: 'Tecnología',
-      text: 'Contamos con la más avanzada tecnología para garantizar la efectividad de nuestro trabajo.'
+      text: 'Uno de nuestros mayores diferenciales es contar con un departamento de desarrollo tecnológico propio. La autonomía tecnológica se refleja en un servicio más rápido, confiable y a medida.'
     },
     {
       img: 'assets/imgs/beneficios/practicas.svg',
       title: 'Mejores Prácticas',
-      text: 'Nuestras prácticas y profesionales se caracterizan por la eficacia y el poder de resolución.'
+      text: 'En Tele Assistance trabajamos bajo un enfoque de gestión por procesos alineado a normas ISO. Estas buenas prácticas nos permiten ofrecer un servicio eficiente, responsable y comprometido con el entorno.'
     },
     {
       img: 'assets/imgs/beneficios/cobros.svg',
       title: 'Cobros Electrónicos',
-      text: 'Contamos con medios de cobros electrónicos, para comodidad de nuestros clientes.'
+      text: 'Ofrecemos diversas formas de pago electrónico, pensadas para brindar comodidad, agilidad y seguridad. <ul><li>Tarjetas de crédito y débito.</li><li>Débito automático y transferencias.</li><li>Códigos QR.</li><li>Facturación electrónica y comprobantes automáticos.</li> </ul>'
     }
   ]
 
